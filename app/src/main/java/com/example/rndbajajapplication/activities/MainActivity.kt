@@ -105,10 +105,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    fun getAppDataUsage(applicationInfo: ApplicationInfo): Long {
+    fun getAppDataUsage(applicationInfo: ApplicationInfo): Double {
         val uid = applicationInfo.uid
         val totalDataUsage = getPackageBytesMobile(uid) + getPackageBytesWifi(uid)
-        return totalDataUsage;
+        return (totalDataUsage * 9.537 * 0.00000001);
     }
 
     @RequiresApi(Build.VERSION_CODES.M)

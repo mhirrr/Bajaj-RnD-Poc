@@ -1,17 +1,22 @@
 package com.example.rndbajajapplication.adapters
 
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
+import androidx.core.widget.TextViewCompat
+import androidx.core.widget.TextViewCompat.setAutoSizeTextTypeWithDefaults
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rndbajajapplication.models.AppData
 import com.example.rndbajajapplication.R
 
 class AppDataAdapter(private var applications: MutableList<AppData>) : RecyclerView.Adapter<AppDataAdapter.AppDataHolder>() {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     inner class AppDataHolder(v: View): RecyclerView.ViewHolder(v) {
         var itemImage: ImageView
         var itemName: TextView
@@ -29,6 +34,8 @@ class AppDataAdapter(private var applications: MutableList<AppData>) : RecyclerV
             itemInstallDate = v.findViewById(R.id.appInstallDate)
             itemDataUsage = v.findViewById(R.id.appDataUsage)
             itemSize = v.findViewById(R.id.appSize)
+
+            itemPackage.setAutoSizeTextTypeWithDefaults(TextView.AUTO_SIZE_TEXT_TYPE_UNIFORM)
 
             v.setOnClickListener {
                 Log.d("HERE", itemName.text.toString())
